@@ -4,24 +4,16 @@ class PackageViewController < UICollectionViewController
   CELL_COUNT = 30 
   SECTION_COUNT = 3
 
-  # we can set a default layout for the PackageViewController, can't we?
-  def initWithCollectionViewLayout(layout = GridLayout.alloc.init)
-    super
-  end
-  
   def viewDidLoad
     self.collectionView.registerClass(PackageCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
-    # Package Header?
+    # Package Header Needs to be registered, too
     self.collectionView.registerClass(PackageHeader, 
            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, 
                   withReuseIdentifier: "PackageHeader")
-    
-    self.collectionView.dataSource = self
-    self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0)
-
-    # SETTING THE REFERENCE SIZE AND HAVING A DELEGATE ARE BOTH NEEDED TO MAKE THESE SHOW
+    # THIS TRICKY PROPERTY MUST BE SET, OR DELEGATES AND ALL ARE IGNORED
     self.collectionView.collectionViewLayout.headerReferenceSize = CGSizeMake(10.0, 30.0)
-
+    
+    self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0)
     self.collectionView.backgroundColor = UIColor.blackColor
   end
     
@@ -40,9 +32,10 @@ class PackageViewController < UICollectionViewController
   end
   
   def collectionView(clv, viewForSupplementaryElementOfKind:kind, atIndexPath:path)
-    section = path.section
-    
     identifier =  "PackageHeader"
-    clv.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier:identifier, forIndexPath:path)
+    clv.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier:identifier, forIndexPath:path).tap do |header|
+      header.display_string = "Section #{path.section}"
+    end
   end
+
 end
