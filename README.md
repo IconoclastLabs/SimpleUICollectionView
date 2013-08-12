@@ -1,4 +1,4 @@
-Simple UICollectionView
+Simple RubyMotion UICollectionView
 ======================
 
 CollectionViews can suck.  Especially when you're *NOT* using the interface builder.  
