@@ -1,6 +1,7 @@
 class PackageViewController < UICollectionViewController
   CELL_IDENTIFIER = "Package Cell"
-  CELL_WIDTH = 160
+  CELL_WIDTH = 50
+  CELL_HEIGHT = 50
   CELL_COUNT = 30 
   SECTION_COUNT = 3
 
@@ -12,6 +13,7 @@ class PackageViewController < UICollectionViewController
                   withReuseIdentifier: "PackageHeader")
     # THIS TRICKY PROPERTY MUST BE SET, OR DELEGATES AND ALL ARE IGNORED
     self.collectionView.collectionViewLayout.headerReferenceSize = CGSizeMake(10.0, 30.0)
+    self.collectionView.collectionViewLayout.itemSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
     
     self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0)
     self.collectionView.backgroundColor = UIColor.blackColor
