@@ -6,3 +6,5 @@ CollectionViews can suck.  Especially when you're *NOT* using the interface buil
 Here's the minimalized UICollectionView with headers for simple RubyMotion usage. :+1:
 
 ![screenshot](https://raw.github.com/IconoclastLabs/SimpleUICollectionView/master/ScreenShot.png "RubyMotion Collection View")
+
+Used in awesome apps, like [Texties](https://github.com/MohawkApps/Texties)
